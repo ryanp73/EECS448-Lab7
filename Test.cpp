@@ -24,7 +24,9 @@ void Test::runAllTests()
     testSize();
     testIsEmpty();
     testAddFront();
+    testRemoveFront();
     testAddBack();
+    testRemoveBack();
 }
 
 void Test::testIsEmpty()
