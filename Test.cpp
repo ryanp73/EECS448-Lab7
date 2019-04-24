@@ -19,7 +19,7 @@ Test::~Test()
 
 void Test::writeBug(std::string bug) 
 {
-    buglist << bug;
+    buglist << bug << std::endl;
 }
 
 void Test::resetList()
@@ -33,18 +33,12 @@ void Test::resetList()
 
 void Test::runAllTests()
 {
+    testConstructor();
+    testDestructor();
+    testSize();
     testIsEmpty();
-}
-
-void Test::testConstructor() 
-{
-    resetList();
-    testList = new LinkedListOfInts();
-
-    if (!testList->isEmpty())
-    {
-        writeBug("Constructor should create an empty list.");
-    }    
+    testAddFront();
+    testAddBack();
 }
 
 void Test::testIsEmpty()
@@ -89,14 +83,14 @@ void Test::testSize()
 {
     LinkedListOfInts testList;
 
-    if (!testList.size() != 0) 
+    if (testList.size() != 0) 
     {
         writeBug("size() should be 0 upon instantiation.");
     }
 
     testList.addBack(10);
 
-    if (!testList.size() != 1)
+    if (testList.size() != 1)
     {
         writeBug("size() should be 1 after an element is added.");
     }
