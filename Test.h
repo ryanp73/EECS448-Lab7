@@ -21,6 +21,8 @@ public:
     void testDestructor();
     void testIsEmpty();
     void testSize();
+    void testAddFront();
+    void testAddBack();
 };
 
 #endif

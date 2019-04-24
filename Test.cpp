@@ -81,7 +81,7 @@ void Test::testConstructor()
 
 void Test::testDestructor()
 {
-    // TODO: I don't think is possible
+    // TODO: Not sure how to test this
     resetList();
 }
 
@@ -100,5 +100,23 @@ void Test::testSize()
     {
         writeBug("size() should be 1 after an element is added.");
     }
+}
+
+void Test::testAddBack()
+{
+    int length = testList->toVector().size();
+
+    testList->addBack(73);
+
+    if (testList->size() - length != 1)
+    {
+        writeBug("addBack() should increase the size of the list by 1.");
+    }
+
+    if (testList->toVector().back() != 73)
+    {
+        writeBug("addBack() should add a value to ");
+    }
+
 }
 
