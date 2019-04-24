@@ -4,17 +4,31 @@
 
 Test::Test() 
 {
+    resetList();
     buglist.open("buglist.txt");
 }
 
 Test::~Test()
 {
     buglist.close();
+    if (testList != nullptr)
+    {
+        delete testList;
+    }
 }
 
 void Test::writeBug(std::string bug) 
 {
     buglist << bug;
+}
+
+void Test::resetList()
+{
+    if (testList != nullptr)
+    {
+        delete testList;
+    }
+    testList = nullptr;
 }
 
 void Test::runAllTests()
@@ -24,24 +38,29 @@ void Test::runAllTests()
 
 void Test::testConstructor() 
 {
-    LinkedListOfInts testList;
+    resetList();
+    testList = new LinkedListOfInts();
 
+    if (!testList->isEmpty())
+    {
+        writeBug("Constructor should create an empty list.");
+    }    
 }
 
 void Test::testIsEmpty()
 {
-    // Create empty list
-    LinkedListOfInts testList;
-    
+    resetList();
+    testList = new LinkedListOfInts();
+
     // Checks if list isEmpty on construction
-    if (!testList.isEmpty())
+    if (!testList->isEmpty())
     {
         writeBug("isEmpty() returns false when given empty list.");
     }
 
-    testList.addBack(10);
+    testList->addBack(10);
 
-    if (testList.isEmpty())
+    if (testList->isEmpty())
     {
         writeBug("isEmpty() returns true when given non-empty list.");
     }
@@ -49,14 +68,21 @@ void Test::testIsEmpty()
 
 void Test::testConstructor() 
 {
-    LinkedListOfInts testList;
-
-    std::vector<int> testVec = testList.toVector();
+    resetList();
+    testList = new LinkedListOfInts();
+    
+    std::vector<int> testVec = testList->toVector();
 
     if (!testVec.empty()) 
     {
         writeBug("Constructor should create an empty list.");
     }
+}
+
+void Test::testDestructor()
+{
+    // TODO: I don't think is possible
+    resetList();
 }
 
 void Test::testSize()
@@ -75,3 +101,4 @@ void Test::testSize()
         writeBug("size() should be 1 after an element is added.");
     }
 }
+

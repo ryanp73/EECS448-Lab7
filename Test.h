@@ -8,14 +8,17 @@ class Test
 {
 private:
     std::ofstream buglist;
+    LinkedListOfInts* testList;
 
     void writeBug(std::string bug);
+    void resetList();
 
 public:
     Test();
     ~Test();
     void runAllTests();
     void testConstructor();
+    void testDestructor();
     void testIsEmpty();
     void testSize();
 };
