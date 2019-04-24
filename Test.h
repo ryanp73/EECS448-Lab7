@@ -17,6 +17,7 @@ public:
     void runAllTests();
     void testConstructor();
     void testIsEmpty();
+    void testSize();
 };
 
 #endif

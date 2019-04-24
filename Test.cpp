@@ -58,3 +58,20 @@ void Test::testConstructor()
         writeBug("Constructor should create an empty list.");
     }
 }
+
+void Test::testSize()
+{
+    LinkedListOfInts testList;
+
+    if (!testList.size() != 0) 
+    {
+        writeBug("size() should be 0 upon instantiation.");
+    }
+
+    testList.addBack(10);
+
+    if (!testList.size() != 1)
+    {
+        writeBug("size() should be 1 after an element is added.");
+    }
+}
