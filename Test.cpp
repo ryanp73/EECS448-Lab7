@@ -4,31 +4,17 @@
 
 Test::Test() 
 {
-    resetList();
     buglist.open("buglist.txt");
 }
 
 Test::~Test()
 {
     buglist.close();
-    if (testList != nullptr)
-    {
-        delete testList;
-    }
 }
 
 void Test::writeBug(std::string bug) 
 {
     buglist << bug << std::endl;
-}
-
-void Test::resetList()
-{
-    if (testList != nullptr)
-    {
-        delete testList;
-    }
-    testList = nullptr;
 }
 
 void Test::runAllTests()
@@ -43,18 +29,17 @@ void Test::runAllTests()
 
 void Test::testIsEmpty()
 {
-    resetList();
-    testList = new LinkedListOfInts();
+    LinkedListOfInts testList;
 
     // Checks if list isEmpty on construction
-    if (!testList->isEmpty())
+    if (!testList.isEmpty())
     {
         writeBug("isEmpty() returns false when given empty list.");
     }
 
-    testList->addBack(10);
+    testList.addBack(10);
 
-    if (testList->isEmpty())
+    if (testList.isEmpty())
     {
         writeBug("isEmpty() returns true when given non-empty list.");
     }
@@ -62,10 +47,9 @@ void Test::testIsEmpty()
 
 void Test::testConstructor() 
 {
-    resetList();
-    testList = new LinkedListOfInts();
+    LinkedListOfInts testList;
     
-    std::vector<int> testVec = testList->toVector();
+    std::vector<int> testVec = testList.toVector();
 
     if (!testVec.empty()) 
     {
@@ -76,7 +60,6 @@ void Test::testConstructor()
 void Test::testDestructor()
 {
     // TODO: Not sure how to test this
-    resetList();
 }
 
 void Test::testSize()
@@ -98,16 +81,20 @@ void Test::testSize()
 
 void Test::testAddFront()
 {
-    int length = testList->toVector().size();
+    LinkedListOfInts testList;
 
-    testList->addFront(42);
+    testList.addFront(15);
 
-    if (testList->size() - length != 1)
+    int length = testList.toVector().size();
+    
+    testList.addFront(42);
+
+    if (testList.size() - length != 1)
     {
         writeBug("addFront() should increase the size of the list by 1.");
     }
 
-    if (testList->toVector().front() != 42)
+    if (testList.toVector().front() != 42)
     {
         writeBug("addFront() should add passed value to front of list.");
     }
@@ -115,19 +102,22 @@ void Test::testAddFront()
 
 void Test::testAddBack()
 {
-    int length = testList->toVector().size();
+    LinkedListOfInts testList;
 
-    testList->addBack(73);
+    testList.addBack(12);
 
-    if (testList->size() - length != 1)
+    int length = testList.toVector().size();
+
+    testList.addBack(73);
+
+    if (testList.size() - length != 1)
     {
         writeBug("addBack() should increase the size of the list by 1.");
     }
 
-    if (testList->toVector().back() != 73)
+    if (testList.toVector().back() != 73)
     {
         writeBug("addBack() should add the passed value to back of list.");
     }
-
 }
 

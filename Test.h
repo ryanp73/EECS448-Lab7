@@ -8,10 +8,8 @@ class Test
 {
 private:
     std::ofstream buglist;
-    LinkedListOfInts* testList;
 
     void writeBug(std::string bug);
-    void resetList();
 
 public:
     Test();
