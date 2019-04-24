@@ -21,6 +21,8 @@ public:
     void testSize();
     void testAddFront();
     void testAddBack();
+    void testRemoveFront();
+    void testRemoveBack();
 };
 
 #endif

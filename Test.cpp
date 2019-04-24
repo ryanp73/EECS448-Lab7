@@ -121,3 +121,61 @@ void Test::testAddBack()
     }
 }
 
+void Test::testRemoveFront()
+{
+    LinkedListOfInts testList;
+
+    if (testList.removeFront())
+    {
+        writeBug("removeFront() should return false for an empty list.");
+    }
+
+    testList.addFront(15);
+    testList.addFront(10);
+
+    if (!testList.removeFront())
+    {
+        writeBug("removeFront() should return true for a non-empty list.");
+    }
+
+    if (testList.size() != 1)
+    {
+        writeBug("List size should have 1 fewer element after removeFront().");
+    }
+
+    if (testList.toVector().front() == 10)
+    {
+        writeBug("Front of the list should be removed when removeFront() is called.");
+    }
+
+}
+
+void Test::testRemoveBack()
+{
+    LinkedListOfInts testList;
+
+    if (testList.removeBack())
+    {
+        writeBug("removeBack() should return false for an empty list.");
+    }
+
+    testList.addBack(45);
+    testList.addBack(30);
+
+    if (!testList.removeBack())
+    {
+        writeBug("removeBack() should return true for a non-empty list.");
+    }
+
+    if (testList.size() != 1)
+    {
+        writeBug("List size should have 1 fewer element after removeBack().");
+    }
+
+    if (testList.toVector().back() == 30)
+    {
+        writeBug("Back of the list should be removed when removeBack() is called.");
+    }
+
+}
+
