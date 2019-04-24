@@ -46,3 +46,15 @@ void Test::testIsEmpty()
         writeBug("isEmpty() returns true when given non-empty list.");
     }
 }
+
+void Test::testConstructor() 
+{
+    LinkedListOfInts testList;
+
+    std::vector<int> testVec = testList.toVector();
+
+    if (!testVec.empty()) 
+    {
+        writeBug("Constructor should create an empty list.");
+    }
+}
