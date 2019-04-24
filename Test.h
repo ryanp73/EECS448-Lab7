@@ -23,6 +23,7 @@ public:
     void testAddBack();
     void testRemoveFront();
     void testRemoveBack();
+    void testSearch();
 };
 
 #endif

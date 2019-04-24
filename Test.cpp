@@ -149,7 +149,6 @@ void Test::testRemoveFront()
     {
         writeBug("Front of the list should be removed when removeFront() is called.");
     }
-
 }
 
 void Test::testRemoveBack()
@@ -178,6 +177,21 @@ void Test::testRemoveBack()
     {
         writeBug("Back of the list should be removed when removeBack() is called.");
     }
-
 }
 
+void Test::testSearch()
+{
+    LinkedListOfInts testList;
+
+    testList.addFront(40);
+
+    if (testList.search(25))
+    {
+        writeBug("search() should return false when item is not present.");
+    }
+
+    if (!testList.search(40))
+    {
+        writeBug("search() should return true when item is present.");
+    }
+}
