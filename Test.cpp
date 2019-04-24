@@ -102,6 +102,23 @@ void Test::testSize()
     }
 }
 
+void Test::testAddFront()
+{
+    int length = testList->toVector().size();
+
+    testList->addFront(42);
+
+    if (testList->size() - length != 1)
+    {
+        writeBug("addFront() should increase the size of the list by 1.");
+    }
+
+    if (testList->toVector().front() != 42)
+    {
+        writeBug("addFront() should add passed value to front of list.");
+    }
+}
+
 void Test::testAddBack()
 {
     int length = testList->toVector().size();
@@ -115,7 +132,7 @@ void Test::testAddBack()
 
     if (testList->toVector().back() != 73)
     {
-        writeBug("addBack() should add a value to ");
+        writeBug("addBack() should add the passed value to back of list.");
     }
 
 }
