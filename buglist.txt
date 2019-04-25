@@ -1,0 +1,6 @@
+isEmpty() returns false when given empty list.
+removeFront() should return true for a non-empty list.
+List size should have 1 fewer element after removeFront().
+addBack() should add passed value to back of list.
+removeBack() should return true for a non-empty list.
+List size should have 1 fewer element after removeBack().

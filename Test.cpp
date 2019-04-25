@@ -31,6 +31,7 @@ void Test::assertEqual(std::string test, int act, int exp)
         std::cout << "Test failed!" << std::endl;
         writeBug(test);
     }
+	std::cout << std::endl;
 }
 
 void Test::assertEqual(std::string test, bool act, bool exp)
@@ -47,6 +48,7 @@ void Test::assertEqual(std::string test, bool act, bool exp)
         std::cout << "Test failed!" << std::endl;
         writeBug(test);
     }
+	std::cout << std::endl;
 }
 
 void Test::runAllTests()

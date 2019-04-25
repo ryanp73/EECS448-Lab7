@@ -1,0 +1,88 @@
+Constructor should create an empty list.
+Expected: 1
+Actual:1
+Test succeeded!
+
+size() should be 0 upon instantiation.
+Expected: 0
+Actual:0
+Test succeeded!
+
+size() should be 1 after element added.
+Expected: 1
+Actual:1
+Test succeeded!
+
+isEmpty() returns false when given empty list.
+Expected: 0
+Actual:1
+Test failed!
+
+isEmpty() returns true when given non-empty list.
+Expected: 1
+Actual:1
+Test succeeded!
+
+addFront() should increase the size of the list by 1.
+Expected: 1
+Actual:1
+Test succeeded!
+
+addFront() should add passed value to front of list.
+Expected: 42
+Actual:42
+Test succeeded!
+
+removeFront() should return false for an empty list.
+Expected: 0
+Actual:0
+Test succeeded!
+
+removeFront() should return true for a non-empty list.
+Expected: 1
+Actual:0
+Test failed!
+
+List size should have 1 fewer element after removeFront().
+Expected: 1
+Actual:2
+Test failed!
+
+Front of the list should be removed when removeFront() is called.
+Expected: 10
+Actual:10
+Test succeeded!
+
+addBack() should increase the size of the list by 1.
+Expected: 1
+Actual:1
+Test succeeded!
+
+addBack() should add passed value to back of list.
+Expected: 40
+Actual:12
+Test failed!
+
+removeBack() should return false for an empty list.
+Expected: 0
+Actual:0
+Test succeeded!
+
+removeBack() should return true for a non-empty list.
+Expected: 1
+Actual:0
+Test failed!
+
+List size should have 1 fewer element after removeBack().
+Expected: 1
+Actual:2
+Test failed!
+
+Back of the list should be removed when removeBack() is called.
+Expected: 24
+Actual:24
+Test succeeded!
+
+Running...
+And we're done.
+Goodbye.
