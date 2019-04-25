@@ -10,8 +10,10 @@ private:
     std::ofstream buglist;
 
     void writeBug(std::string bug);
+    void assertEqual(std::string test, int act, int exp);
+    void assertEqual(std::string test, bool act, bool exp);
 
-public:
+  public:
     Test();
     ~Test();
     void runAllTests();

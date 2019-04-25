@@ -17,6 +17,38 @@ void Test::writeBug(std::string bug)
     buglist << bug << std::endl;
 }
 
+void Test::assertEqual(std::string test, int act, int exp)
+{
+    std::cout << test << std::endl;
+    std::cout << "Expected: " << exp << std::endl;
+    std::cout << "Actual:" << act << std::endl;
+    if (act == exp)
+    {
+        std::cout << "Test succeeded!" << std::endl;
+    }
+    else
+    {
+        std::cout << "Test failed!" << std::endl;
+        writeBug(test);
+    }
+}
+
+void Test::assertEqual(std::string test, bool act, bool exp)
+{
+    std::cout << test << std::endl;
+    std::cout << "Expected: " << exp << std::endl;
+    std::cout << "Actual:" << act << std::endl;
+    if (act == exp)
+    {
+        std::cout << "Test succeeded!" << std::endl;
+    }
+    else
+    {
+        std::cout << "Test failed!" << std::endl;
+        writeBug(test);
+    }
+}
+
 void Test::runAllTests()
 {
     testConstructor();
@@ -34,17 +66,14 @@ void Test::testIsEmpty()
     LinkedListOfInts testList;
 
     // Checks if list isEmpty on construction
-    if (!testList.isEmpty())
-    {
-        writeBug("isEmpty() returns false when given empty list.");
-    }
+    assertEqual("isEmpty() returns false when given empty list.", 
+                testList.isEmpty(), 
+                false);
 
     testList.addBack(10);
-
-    if (testList.isEmpty())
-    {
-        writeBug("isEmpty() returns true when given non-empty list.");
-    }
+    assertEqual("isEmpty() returns true when given non-empty list.",
+                testList.isEmpty(),
+                true);
 }
 
 void Test::testConstructor() 
@@ -53,10 +82,9 @@ void Test::testConstructor()
     
     std::vector<int> testVec = testList.toVector();
 
-    if (!testVec.empty()) 
-    {
-        writeBug("Constructor should create an empty list.");
-    }
+    assertEqual("Constructor should create an empty list." , 
+                testVec.empty(),
+                true);
 }
 
 void Test::testDestructor()
@@ -68,17 +96,15 @@ void Test::testSize()
 {
     LinkedListOfInts testList;
 
-    if (testList.size() != 0) 
-    {
-        writeBug("size() should be 0 upon instantiation.");
-    }
-
+    assertEqual("size() should be 0 upon instantiation.",
+                testList.size(),
+                0);
+    
     testList.addBack(10);
 
-    if (testList.size() != 1)
-    {
-        writeBug("size() should be 1 after an element is added.");
-    }
+    assertEqual("size() should be 1 after element added.",
+                testList.size(),
+                1);
 }
 
 void Test::testAddFront()
@@ -87,19 +113,15 @@ void Test::testAddFront()
 
     testList.addFront(15);
 
-    int length = testList.toVector().size();
-    
+    assertEqual("addFront() should increase the size of the list by 1.",
+                testList.size(),
+                1);
+
     testList.addFront(42);
 
-    if (testList.size() - length != 1)
-    {
-        writeBug("addFront() should increase the size of the list by 1.");
-    }
-
-    if (testList.toVector().front() != 42)
-    {
-        writeBug("addFront() should add passed value to front of list.");
-    }
+    assertEqual("addFront() should add passed value to front of list.",
+                testList.toVector().front(),
+                42);
 }
 
 void Test::testAddBack()
@@ -108,75 +130,63 @@ void Test::testAddBack()
 
     testList.addBack(12);
 
-    int length = testList.toVector().size();
+    assertEqual("addBack() should increase the size of the list by 1.",
+                testList.size(),
+                1);
 
-    testList.addBack(73);
+    testList.addBack(40);
 
-    if (testList.size() - length != 1)
-    {
-        writeBug("addBack() should increase the size of the list by 1.");
-    }
-
-    if (testList.toVector().back() != 73)
-    {
-        writeBug("addBack() should add the passed value to back of list.");
-    }
+    assertEqual("addBack() should add passed value to back of list.",
+                testList.toVector().back(),
+                40);
 }
 
 void Test::testRemoveFront()
 {
     LinkedListOfInts testList;
 
-    if (testList.removeFront())
-    {
-        writeBug("removeFront() should return false for an empty list.");
-    }
+    assertEqual("removeFront() should return false for an empty list.", 
+                testList.removeFront(),
+                false);
 
     testList.addFront(15);
     testList.addFront(10);
 
-    if (!testList.removeFront())
-    {
-        writeBug("removeFront() should return true for a non-empty list.");
-    }
+    assertEqual("removeFront() should return true for a non-empty list.",
+                testList.removeFront(),
+                true);
 
-    if (testList.size() != 1)
-    {
-        writeBug("List size should have 1 fewer element after removeFront().");
-    }
+    assertEqual("List size should have 1 fewer element after removeFront().",
+                testList.size(),
+                1);
 
-    if (testList.toVector().front() == 10)
-    {
-        writeBug("Front of the list should be removed when removeFront() is called.");
-    }
+    assertEqual("Front of the list should be removed when removeFront() is called.",
+                testList.toVector().front(),
+                10);
 }
 
 void Test::testRemoveBack()
 {
     LinkedListOfInts testList;
 
-    if (testList.removeBack())
-    {
-        writeBug("removeBack() should return false for an empty list.");
-    }
+    assertEqual("removeBack() should return false for an empty list.",
+                testList.removeBack(),
+                false);
 
-    testList.addBack(45);
-    testList.addBack(30);
+    testList.addBack(24);
+    testList.addBack(12);
 
-    if (!testList.removeBack())
-    {
-        writeBug("removeBack() should return true for a non-empty list.");
-    }
+    assertEqual("removeBack() should return true for a non-empty list.",
+                testList.removeBack(),
+                true);
 
-    if (testList.size() != 1)
-    {
-        writeBug("List size should have 1 fewer element after removeBack().");
-    }
+    assertEqual("List size should have 1 fewer element after removeBack().",
+                testList.size(),
+                1);
 
-    if (testList.toVector().back() == 30)
-    {
-        writeBug("Back of the list should be removed when removeBack() is called.");
-    }
+    assertEqual("Back of the list should be removed when removeBack() is called.",
+                testList.toVector().back(),
+                24);
 }
 
 void Test::testSearch()
@@ -185,13 +195,11 @@ void Test::testSearch()
 
     testList.addFront(40);
 
-    if (testList.search(25))
-    {
-        writeBug("search() should return false when item is not present.");
-    }
+    assertEqual("search() should return false when item is not present.", 
+                testList.search(25),
+                false);
 
-    if (!testList.search(40))
-    {
-        writeBug("search() should return true when item is present.");
-    }
+    assertEqual("search() should return true when item is present.",
+                testList.search(40),
+                true);
 }
